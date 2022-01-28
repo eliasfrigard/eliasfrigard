@@ -23,7 +23,7 @@
         <i class="fab fa-github"></i>
         <i class="fab fa-linkedin"></i>
         <i class="fab fa-spotify"></i>
-        <i class="fab fa-facebook"></i>
+        <i class="far fa-envelope"></i>
       </div>
     </div>
 

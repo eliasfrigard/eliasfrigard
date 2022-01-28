@@ -42,10 +42,6 @@ export default {
   color: white;
 }
 
-.button:hover > h2 {
-  transform: scale(1.1);
-}
-
 .button:before {
   background-color: blue;
 }
