@@ -28,7 +28,7 @@ export default {
 }
 
 .home h1 {
-  font-size: 80px;
+  font-size: 140px;
   text-transform: uppercase;
   margin-bottom: 50px;
 }
