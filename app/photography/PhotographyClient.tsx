@@ -28,7 +28,9 @@ export default function PhotographyClient({
 }: {
   images: ImageEnhanced[];
 }) {
-  const lightbox = useRef<LightGallery | null>(null);
+  const lightbox = useRef<LightGallery | null>(null)
+
+  console.log(images[0])
 
   return (
     <main className="flex space-x-12 min-h-screen items-center justify-between p-24 bg-neutral-900">
@@ -48,13 +50,13 @@ export default function PhotographyClient({
         }))}
       />
 
-      <Masonry className="flex gap-2" columnClassName="bg-clip-padding">
+      <Masonry className="flex gap-4" columnClassName="bg-clip-padding">
         {images.map((image, idx) => (
           <Image
             key={image.src}
-            className="hover:opacity-80 cursor-pointer my-2"
+            className="hover:opacity-80 cursor-pointer my-4 rounded shadow"
             onClick={() => lightbox.current?.openGallery(idx)}
-            src={image.src}
+            src={image.href}
             alt={image.alt}
             width={image.width}
             height={image.height}

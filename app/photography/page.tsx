@@ -18,6 +18,9 @@ export default async function PhotographyPage() {
 async function getImages() {
   const imagePaths = [
     "https://cdn.pixabay.com/photo/2016/11/29/12/13/fence-1869401_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/29/12/13/fence-1869401_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/29/12/13/fence-1869401_1280.jpg",
+    "https://cdn.pixabay.com/photo/2016/11/29/12/13/fence-1869401_1280.jpg",
   ];
   const imagesWithMetadata = [];
 
