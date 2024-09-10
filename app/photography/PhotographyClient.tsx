@@ -12,6 +12,7 @@ import "lightgallery/css/lg-thumbnail.css";
 import lgZoom from "lightgallery/plugins/zoom";
 import "lightgallery/css/lg-zoom.css";
 import type { LightGallery } from "lightgallery/lightgallery"
+import Gallery, { Photo } from "react-photo-gallery";
 
 type ImageEnhanced = {
   href: string;
@@ -23,6 +24,14 @@ type ImageEnhanced = {
   blurDataUrl: string;
 };
 
+const myBreakpointsAndCols = {
+  default: 3, // This is for desktop
+  1100: 2,    // For screens wider than 1100px, but less than or equal to 1200px
+  700: 1,     // For screens wider than 700px, but less than or equal to 1100px
+  500: 1,     // For screens wider than 500px, but less than or equal to 700px
+  0: 1        // For screens less than or equal to 500px
+}
+
 export default function PhotographyClient({
   images,
 }: {
@@ -31,6 +40,12 @@ export default function PhotographyClient({
   const lightbox = useRef<LightGallery | null>(null)
 
   console.log(images[0])
+
+  const photos = images.map((image) => ({
+    src: image.href,
+    width: image.width,
+    height: image.height
+  }))
 
   return (
     <main className="flex space-x-12 min-h-screen items-center justify-between p-24 bg-neutral-900">
@@ -50,7 +65,13 @@ export default function PhotographyClient({
         }))}
       />
 
-      <Masonry className="flex gap-4" columnClassName="bg-clip-padding">
+<Gallery 
+  photos={photos} 
+  onClick={(event, { index }) => lightbox.current?.openGallery(index)} 
+  renderImage={props => <Photo className="rounded-xl" {...props} />}
+/>
+
+      {/* <Masonry breakpointCols={myBreakpointsAndCols} className="flex gap-4" columnClassName="bg-clip-padding">
         {images.map((image, idx) => (
           <Image
             key={image.src}
@@ -64,7 +85,7 @@ export default function PhotographyClient({
             blurDataURL={image.blurDataUrl}
           />
         ))}
-      </Masonry>
+      </Masonry> */}
     </main>
   );
 }
