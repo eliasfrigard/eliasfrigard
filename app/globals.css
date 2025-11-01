@@ -13,3 +13,7 @@
     text-wrap: balance;
   }
 }
+
+.font-brettley {
+  font-family: var(--font-brettley);
+}
