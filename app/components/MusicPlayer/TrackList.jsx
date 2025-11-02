@@ -2,44 +2,111 @@
 
 export default function Controls({ tracks, currentTrack, isPlaying, playTrack }) {
   return (
-    <table className="w-full mb-6">
-      <tbody>
-        {tracks.map((track, index) => {
-          const isCurrent = currentTrack?.id === track.id;
+    <div className="grid grid-cols-[60px_1fr_200px_80px] gap-3 mb-3">
+      {tracks.map((track, index) => {
+        const isCurrent = currentTrack?.id === track.id;
 
-          return (
-            <tr
-              key={track.id}
-              onClick={() => playTrack(track)}
-              className={`
-                border-b border-white/5 cursor-pointer transition-colors rounded-xl
-                ${isCurrent ? 'bg-[#D9753B] text-white' : 'text-black'}
-                hover:bg-[#D9753B] hover:text-white
-              `}
-            >
-              <td className="p-4">
-                {isCurrent && isPlaying ? (
-                  <div
-                    className={`flex gap-1 items-center ${
-                      isCurrent && isPlaying ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  >
-                    <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1 h-4 bg-white animate-pulse" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '300ms' }} />
-                  </div>
-                ) : (
-                  <span>{index + 1}</span>
-                )}
-              </td>
+        return (
+          <div
+            key={track.id}
+            className={`col-span-4 grid grid-cols-subgrid items-center rounded-lg px-6 py-4 hover:shadow-md hover:bg-[#D9753B] hover:text-white cursor-pointer duration-[75ms] ${isCurrent ? 'bg-[#D9753B] text-white' : 'text-black'}`}
+            onClick={() => playTrack(track)}
+          >
+            <div className="text-sm">
+              {isCurrent && isPlaying ? (
+                <div
+                  className={`flex gap-1 items-center justify-center h-full ${
+                    isCurrent && isPlaying ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '0ms' }} />
+                  <span className="w-1 h-4 bg-white animate-pulse" style={{ animationDelay: '150ms' }} />
+                  <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '300ms' }} />
+                </div>
+              ) : (
+                <span>{index + 1}</span>
+              )}
+            </div>
+            <div className="font-medium truncate">{track.title}</div>
+            <div className="truncate">
+              {
+                index % 2 === 0 ? 'Alakotila / Räsänen / Frigård' : 'ALDA'
+              }
+            </div>
+            <div className="text-sm">{track.duration}</div>
+          </div>
+        )
+        // const isCurrent = currentTrack?.id === track.id;
+        // return (
+        //   <div key={track.id} className={`py-4 px-6 ${isCurrent ? 'bg-[#D9753B] text-white' : 'text-black'} flex hover:bg-[#D9753B] hover:text-white rounded-xl cursor-pointer duration-100`} onClick={() => playTrack(track)}>
+        //     <div className="w-10">
+        //       {isCurrent && isPlaying ? (
+        //           <div
+        //             className={`flex gap-1 items-center justify-center h-full ${
+        //               isCurrent && isPlaying ? 'opacity-100' : 'opacity-0'
+        //             }`}
+        //           >
+        //             <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '0ms' }} />
+        //             <span className="w-1 h-4 bg-white animate-pulse" style={{ animationDelay: '150ms' }} />
+        //             <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '300ms' }} />
+        //           </div>
+        //         ) : (
+        //           <span>{index + 1}</span>
+        //         )}
+        //     </div>
 
-              <td className="p-4 font-medium">{track.title}</td>
-              <td className="p-4">{track.artist}</td>
-              <td className="p-4">{track.duration}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+        //     <div className="w-full flex justify-between">
+        //       <p className="flex-1">{track.title}</p>
+        //       <div className="ml-auto flex-1 justify-end flex">
+        //         {/* {track.artist} */}
+        //         {
+        //           index % 2 === 0 ? 'Alakotila / Räsänen / Frigård' : 'ALDA'
+        //         }
+        //       </div>
+        //     </div>
+        //   </div>
+        // );
+      })}
+    </div>
+
+    // <table className="w-full mb-6">
+    //   <tbody>
+    //     {tracks.map((track, index) => {
+    //       const isCurrent = currentTrack?.id === track.id;
+
+    //       return (
+    //         <tr
+    //           key={track.id}
+    //           onClick={() => playTrack(track)}
+    //           className={`
+    //             border-b border-white/5 cursor-pointer transition-colors rounded-xl
+    //             ${isCurrent ? 'bg-[#D9753B] text-white' : 'text-black'}
+    //             hover:bg-[#D9753B] hover:text-white
+    //           `}
+    //         >
+    //           <td className="p-4">
+    //             {isCurrent && isPlaying ? (
+    //               <div
+    //                 className={`flex gap-1 items-center ${
+    //                   isCurrent && isPlaying ? 'opacity-100' : 'opacity-0'
+    //                 }`}
+    //               >
+    //                 <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '0ms' }} />
+    //                 <span className="w-1 h-4 bg-white animate-pulse" style={{ animationDelay: '150ms' }} />
+    //                 <span className="w-1 h-3 bg-white animate-pulse" style={{ animationDelay: '300ms' }} />
+    //               </div>
+    //             ) : (
+    //               <span>{index + 1}</span>
+    //             )}
+    //           </td>
+
+    //           <td className="p-4 font-medium">{track.title}</td>
+    //           <td className="p-4">{track.artist}</td>
+    //           <td className="p-4">{track.duration}</td>
+    //         </tr>
+    //       );
+    //     })}
+    //   </tbody>
+    // </table>
   )
 }

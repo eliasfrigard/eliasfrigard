@@ -21,7 +21,7 @@ export default function Controls({ tracks, currentTrack, setCurrentTrack, isPlay
     setCurrentTrack(nextTrack)
     setIsPlaying(true)
     setTimeout(() => audioRef.current?.play(), 100)
-  }, [currentTrack, tracks])
+  }, [currentTrack, tracks, audioRef, setCurrentTrack, setIsPlaying])
 
   const playPrevious = useCallback(() => {
     if (!currentTrack || tracks.length === 0) return
@@ -30,7 +30,7 @@ export default function Controls({ tracks, currentTrack, setCurrentTrack, isPlay
     setCurrentTrack(prevTrack)
     setIsPlaying(true)
     setTimeout(() => audioRef.current?.play(), 100)
-  }, [currentTrack, tracks])
+  }, [currentTrack, tracks, audioRef, setCurrentTrack, setIsPlaying])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -113,17 +113,17 @@ export default function Controls({ tracks, currentTrack, setCurrentTrack, isPlay
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 text-white">
               <button onClick={playPrevious} disabled={!currentTrack} className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <SkipBack className="w-5 h-5 text-white" />
+                <SkipBack className="w-5 h-5" />
               </button>
-              <button onClick={togglePlayPause} disabled={!currentTrack} className="w-14 h-14 rounded-full bg-gradient-to-r from-white to-white hover:from-white hover:white flex items-center justify-center transition-all shadow-lg hover:shadow-xl">
+              <button onClick={togglePlayPause} disabled={!currentTrack} className="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
               </button>
               <button onClick={playNext} disabled={!currentTrack} className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <SkipForward className="w-5 h-5 text-white" />
+                <SkipForward className="w-5 h-5" />
               </button>
-              <button onClick={stopTrack} disabled={!currentTrack} className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm transition-colors">Stop</button>
+              <button onClick={stopTrack} disabled={!currentTrack} className="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-sm transition-colors">Stop</button>
             </div>
 
             <div className="flex items-center gap-3">
