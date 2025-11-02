@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/PhotoWall/PhotoMasonry.js", "app/components/MusicPlayer.jsx", "app/components/PhotoGallery.jsx", "app/components/PhotoGallery.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/PhotoWall/PhotoMasonry.js", "app/components/MusicPlayer.jsx", "app/components/PhotoGallery.jsx", "app/components/PhotoGallery.jsx", "app/components/MusicPlayer/TrackList.jsx"],
   "exclude": ["node_modules"]
 }

@@ -4,18 +4,19 @@ import { Suspense } from "react";
 import PhotographyClient from "./PhotographyClient";
 import lqip from "lqip-modern";
 import Image from "next/image";
+import PhotoGallery from "../components/PhotoGallery";
 
 export default async function PhotographyPage() {
   // Fetch and process images on the server side
   const images = await getImages();
 
   return (
-    <main className="bg-neutral-900">
+    <main className="py-16">
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="container mx-auto my-16 gap-8 grid grid-cols-3">
+        {/* <div className="container mx-auto my-16 gap-8 grid grid-cols-3">
           {
             images.map((image) => (
-              <Image 
+              <Image
               key={image.href}
               src={image.href}
               alt={image.href}
@@ -24,8 +25,12 @@ export default async function PhotographyPage() {
               />
             ))
           }
-        </div>
+        </div> */}
         {/* <PhotographyClient images={images} /> */}
+
+        <div className="container mx-auto">
+          <PhotoGallery />
+        </div>
       </Suspense>
     </main>
   );

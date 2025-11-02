@@ -24,10 +24,6 @@ export default function Home() {
   return (
     <main className="w-screen min-h-screen">
       <div className="container m-auto py-16 flex flex-col gap-16">
-        {/* <h1 className="text-8xl font-bold tracking-wide text-center font-brettley">
-          Elias Frigård
-        </h1> */}
-
         <div className="w-full aspect-video relative mx-auto rounded-xl shadow overflow-hidden">
           <Image
             src="/elias-3.jpg"
